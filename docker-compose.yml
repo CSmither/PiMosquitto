@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mosquitto:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    network_mode: "host"
+    env_file: 
+      config.env
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: always
+    privileged: true
